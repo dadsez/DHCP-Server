@@ -1,0 +1,41 @@
+lf the 'giaddr' field in a DHCP message from a client is non-zero,
+   the server sends any return messages to the 'DHCP server' port on the
+   BOOTP relay agent whose address appears in 'giaddr'. If the 'giaddr'
+   field is zero and the 'ciaddr' field is nonzero, then the server
+   unicasts DHCPOFFER and DHCPACK messages to the address in 'ciaddr'.
+   If 'giaddr' is zero and 'ciaddr' is zero, and the broadcast bit is
+   set, then the server broadcasts DHCPOFFER and DHCPACK messages to
+   0xffffffff. If the broadcast bit is not set and 'giaddr' is zero and
+   'ciaddr' is zero, then the server unicasts DHCPOFFER and DHCPACK
+   messages to the client's hardware address and 'yiaddr' address.  In
+   all cases, when 'giaddr' is zero, the server broadcasts any DHCPNAK
+   messages to 0xffffffff.
+
+
+
+
+Client IP address; filled in by client in DHCPREQUEST if verifying previously allocated configuration parameters.
+
+
+
+
+ server or relay agent sending or relaying a DHCP message directly
+   to a DHCP client (i.e., not to a relay agent specified in the
+   'giaddr' field) SHOULD examine the BROADCAST bit in the 'flags'
+   field.  If this bit is set to 1, the DHCP message SHOULD be sent as
+   an IP broadcast using an IP broadcast address (preferably 0xffffffff)
+   as the IP destination address and the link-layer broadcast address as
+   the link-layer destination address.  If the BROADCAST bit is cleared
+   to 0, the message SHOULD be sent as an IP unicast to the IP address
+   specified in the 'yiaddr' field and the link-layer address specified
+   in the 'chaddr' field.  If unicasting is not possible, the message
+   MAY be sent as an IP broadcast using an IP broadcast address
+   (preferably 0xffffffff) as the IP destination address and the link-
+   layer broadcast address as the link-layer destination address.
+
+      'server identifier' MUST NOT be filled in, 'requested IP address'
+      option MUST be filled in with client's notion of its previously
+      assigned address. 'ciaddr' MUST be zero. The client is seeking to
+      verify a previously allocated, cached configuration. Server SHOULD
+      send a DHCPNAK message to the client if the 'requested IP address'
+      is incorrect, or is on the wrong network.
