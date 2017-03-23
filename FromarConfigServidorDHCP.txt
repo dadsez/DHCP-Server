@@ -1,0 +1,14 @@
+IP servidor
+Num Subredes (n)
+Gateway subred No. 1
+Direccion de Red subred No. 1
+Máscara de Red subred No. 1
+Tiempo de asignacion subred No. 1
+Gateway subred No. 2
+Direccion de Red subred No. 2
+Máscara de Red subred No. 2
+Tiempo de asignacion subred No. 2
+Gateway subred No. n
+Direccion de Red subred No. n
+Máscara de Red subred No. n
+Tiempo de asignacion subred No. n
